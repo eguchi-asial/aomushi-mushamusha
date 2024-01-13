@@ -1,0 +1,13 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "semi": ["error", "never"],
+    "indent": ["error", 2] // 追加
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  }
+}
