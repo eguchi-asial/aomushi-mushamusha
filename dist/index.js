@@ -2,6 +2,9 @@
 function startGame() {
     const gameStart = Date.now(); // ゲーム開始時刻を記録
     const canvas = document.getElementById('gameCanvas');
+    // canvasの高さと幅をブラウザの高さと幅に設定
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     const ctx = canvas.getContext('2d');
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 5;
@@ -45,6 +48,15 @@ function startGame() {
                 jumping = true;
                 jumpStart = Date.now();
             }
+        }
+    });
+    // 画面タップでジャンプ（スマホ対応）
+    canvas.addEventListener('touchstart', () => {
+        // aomushiが最初の位置にいるときだけ新たなジャンプを開始
+        const initialPosition = canvas.height - aomushiImages[0].height * 2;
+        if (!jumping && y === initialPosition) {
+            jumping = true;
+            jumpStart = Date.now();
         }
     });
     // キーを離したときの処理を関数に切り出す
